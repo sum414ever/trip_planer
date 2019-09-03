@@ -28,8 +28,4 @@ public class Trip {
     @JoinTable(name = "place_trip", joinColumns = @JoinColumn(name = "trip_id"), inverseJoinColumns = @JoinColumn(name = "place_id"))
     private List<Place> places = new ArrayList<>();
 
-    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-    public List<Place> getPlaces() {
-        return places;
-    }
 }
