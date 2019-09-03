@@ -1,16 +1,16 @@
 package edu.cursor.controller;
 
 import edu.cursor.entities.User;
-import edu.cursor.service.UserService;
-import lombok.AllArgsConstructor;
+import edu.cursor.service.UserServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @PostMapping("/user")
     @ResponseBody

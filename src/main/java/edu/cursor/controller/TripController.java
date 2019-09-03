@@ -1,18 +1,17 @@
 package edu.cursor.controller;
 
 import edu.cursor.entities.Trip;
-import edu.cursor.entities.User;
-import edu.cursor.service.TripService;
-import lombok.AllArgsConstructor;
+import edu.cursor.service.TripServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TripController {
-    private final TripService tripService;
+    private final TripServiceImpl tripService;
 
     @PostMapping("/{id}/trip")
     @ResponseBody

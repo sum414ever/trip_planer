@@ -1,17 +1,17 @@
 package edu.cursor.controller;
 
 import edu.cursor.entities.Place;
-import edu.cursor.service.PlaceService;
-import lombok.AllArgsConstructor;
+import edu.cursor.service.PlaceServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PlaceController {
-    private final PlaceService placeService;
+    private final PlaceServiceImpl placeService;
 
     @PostMapping("/place")
     @ResponseBody

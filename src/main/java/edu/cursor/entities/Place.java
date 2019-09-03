@@ -26,6 +26,7 @@ public class Place {
     @ElementCollection(targetClass = Double.class)
     private List<Double> rates;
 
-    @ManyToMany(mappedBy = "places")
-    private List<Trip> trips = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name="trip_id")
+    private Trip trip;
 }
