@@ -48,6 +48,4 @@ public class UserController {
                 .status(HttpStatus.OK)
                 .body("User " + userService.updateUser(id, user) + " updated successfully");
     }
-
-
 }

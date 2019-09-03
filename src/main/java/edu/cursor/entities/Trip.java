@@ -1,6 +1,5 @@
 package edu.cursor.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,13 +12,13 @@ import java.util.List;
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     @ManyToMany(mappedBy = "trips")
+    @ElementCollection(targetClass = User.class)
     private List<User> users = new ArrayList<>();
 
     @Column(name = "places")
@@ -27,5 +26,4 @@ public class Trip {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "place_trip", joinColumns = @JoinColumn(name = "trip_id"), inverseJoinColumns = @JoinColumn(name = "place_id"))
     private List<Place> places = new ArrayList<>();
-
 }

@@ -16,7 +16,6 @@ public class TripController {
     @PostMapping("/{id}/trip")
     @ResponseBody
     public ResponseEntity addTrip(@PathVariable("id") Long id, @RequestBody Trip trip) {
-
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(tripService.addTrip(id, trip));
@@ -33,10 +32,16 @@ public class TripController {
     @PutMapping("/{userId}/trip/{tripId}")
     @ResponseBody
     public ResponseEntity editTripById(@PathVariable("userId") Long userId, @PathVariable("tripId") Long tripId, @RequestBody Trip trip) {
-        tripService.editTripById(userId, tripId, trip);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body("The trip " + trip + " edited");
+                .body(tripService.editTripById(userId, tripId, trip));
+    }
+
+    @PatchMapping("/{userId}/trip/{tripId}")
+    public ResponseEntity shareTripWhitOtherUser(@PathVariable("userId") Long userId, @PathVariable("tripId") Long tripId){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(tripService.shareTripWithOtherUser(tripId,userId));
     }
 
     @GetMapping("/trip/{id}")
@@ -44,5 +49,12 @@ public class TripController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(tripService.findTripById(id));
+    }
+
+    @GetMapping("/trip")
+    public ResponseEntity showAllTrip(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(tripService.findAll());
     }
 }
